@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — PipelineAI</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container { max-width: 640px; margin: 0 auto; }
+
+    nav {
+      background: #1e293b;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    nav strong { font-size: 1.1rem; color: #818cf8; }
+    nav span { color: #94a3b8; }
+
+    h1 { font-size: 1.6rem; margin-bottom: 0.4rem; color: #0f172a; }
+    .subtitle { color: #64748b; margin-bottom: 2rem; font-size: 0.95rem; }
+
+    .history-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .history-banner h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #3b82f6;
+      margin-bottom: 0.6rem;
+    }
+    .page-visit {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid #dbeafe;
+      font-size: 0.85rem;
+    }
+    .page-visit:last-child { border-bottom: none; }
+    .page-visit .path { color: #1d4ed8; font-family: monospace; }
+    .page-visit .meta { color: #64748b; font-size: 0.78rem; }
+
+    form {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+    .row { display: flex; gap: 1rem; }
+    .field { margin-bottom: 1.1rem; flex: 1; }
+    label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.35rem; color: #374151; }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #1e293b;
+      background: #f9fafb;
+      transition: border-color 0.15s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      background: white;
+    }
+    textarea { resize: vertical; min-height: 100px; }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.75rem;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.15s;
+    }
+    button[type="submit"]:hover { background: #4338ca; }
+    button[type="submit"]:disabled { background: #a5b4fc; cursor: not-allowed; }
+
+    .btn-row { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+    .btn-row button[type="submit"] { margin-top: 0; }
+
+    #demoFillBtn {
+      width: 100%;
+      padding: 0.75rem;
+      background: white;
+      color: #4f46e5;
+      border: 1px solid #c7d2fe;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    #demoFillBtn:hover { background: #eef2ff; }
+
+    #status {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+    #status.success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; display: block; }
+    #status.error   { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; display: block; }
+
+    .config {
+      background: #fefce8;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+    }
+    .config label { color: #92400e; font-weight: 600; margin-bottom: 0.3rem; }
+    .config input { background: white; font-family: monospace; font-size: 0.82rem; }
+
+    details { margin-top: 1rem; }
+    summary { font-size: 0.82rem; color: #6366f1; cursor: pointer; }
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      overflow-x: auto;
+      margin-top: 0.5rem;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- <nav>
+    <strong>PipelineAI</strong>
+    <span>Home &nbsp;·&nbsp; Features &nbsp;·&nbsp; Pricing &nbsp;·&nbsp; Case Studies &nbsp;·&nbsp; Contact</span>
+  </nav> -->
+
+  <h1>Contact Form</h1>
+  <p class="subtitle">Tell us about your team and we'll get back to you within 24 hours.</p>
+
+  <!-- <div class="history-banner">
+    <h3>📍 Pages you visited before this form</h3>
+    <div id="historyList"></div>
+  </div> -->
+
+  <div class="config">
+    <label>n8n Webhook URL</label>
+    <input type="url" id="webhookUrl" value="https://dipansrimany.app.n8n.cloud/webhook/lead-capture" placeholder="https://your-n8n.com/webhook-test/lead-capture" />
+  </div>
+
+  <form id="leadForm">
+    <div class="row">
+      <div class="field">
+        <label>Full Name *</label>
+        <input type="text" name="name" required placeholder="Rahul Sharma" />
+      </div>
+      <div class="field">
+        <label>Work Email *</label>
+        <input type="email" name="email" required placeholder="rahul@company.com" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Company *</label>
+        <input type="text" name="company" required placeholder="TechCorp India" />
+      </div>
+      <div class="field">
+        <label>Your Role *</label>
+        <input type="text" name="role" required placeholder="VP of Sales" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Company Size</label>
+        <select name="employees">
+          <option value="1-10">1–10 employees</option>
+          <option value="11-50">11–50 employees</option>
+          <option value="51-200" selected>51–200 employees</option>
+          <option value="201-500">201–500 employees</option>
+          <option value="500+">500+ employees</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Simulated Browse Scenario</label>
+        <select id="scenario" onchange="generateHistory()">
+          <option value="hot">High Intent (Pricing + Case Studies)</option>
+          <option value="warm">Medium Intent (Features + Blog)</option>
+          <option value="cold">Low Intent (Homepage only)</option>
+          <option value="mixed">Mixed (Demo + Docs)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Your Message / Query *</label>
+      <textarea name="message" required placeholder="Tell us about your sales team and what you're looking to improve..."></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button type="button" id="demoFillBtn" onclick="fillDemoData()">Demo Fill</button>
+      <button type="submit" id="submitBtn">Submit</button>
+    </div>
+
+    <div id="status"></div>
+
+    <details>
+      <summary>Preview full payload that will be sent →</summary>
+      <pre id="payloadPreview"></pre>
+    </details>
+  </form>
+
+</div>
+
+<script>
+  const SCENARIOS = {
+    hot: [
+      { page: "/pricing", time_spent: "3m 42s" },
+      { page: "/case-studies/meridian-saas", time_spent: "4m 15s" },
+      { page: "/features/ai-coaching", time_spent: "2m 58s" },
+      { page: "/pricing#enterprise", time_spent: "1m 30s" },
+      { page: "/contact", time_spent: "0m 45s" },
+    ],
+    warm: [
+      { page: "/features", time_spent: "2m 10s" },
+      { page: "/blog/how-to-coach-sales-reps", time_spent: "3m 00s" },
+      { page: "/features/call-recording", time_spent: "1m 20s" },
+      { page: "/contact", time_spent: "0m 55s" },
+    ],
+    cold: [
+      { page: "/", time_spent: "0m 48s" },
+      { page: "/contact", time_spent: "0m 30s" },
+    ],
+    mixed: [
+      { page: "/", time_spent: "1m 05s" },
+      { page: "/features/live-coaching", time_spent: "2m 40s" },
+      { page: "/docs/integrations", time_spent: "3m 15s" },
+      { page: "/pricing", time_spent: "1m 10s" },
+      { page: "/contact", time_spent: "0m 40s" },
+    ],
+  };
+
+  const DEMO_LEADS = [
+    { name: "Rahul Sharma", email: "rahul@techcorp.in", company: "TechCorp India", role: "VP of Sales", employees: "51-200", scenario: "hot",
+      message: "We have a 40-person sales team and are struggling with consistent call coaching. Looking to roll out AI-driven feedback before next quarter." },
+    { name: "Priya Nair", email: "priya.nair@meridiansaas.com", company: "Meridian SaaS", role: "Head of Revenue Ops", employees: "201-500", scenario: "warm",
+      message: "Evaluating tools to reduce ramp time for new AEs. Would love a walkthrough of the coaching dashboard." },
+    { name: "Arjun Mehta", email: "arjun@brightleaf.io", company: "BrightLeaf Analytics", role: "Sales Manager", employees: "11-50", scenario: "cold",
+      message: "Just browsing options for our small team, curious what pricing looks like." },
+    { name: "Sneha Kapoor", email: "sneha.kapoor@vortexlabs.com", company: "Vortex Labs", role: "Director of Sales Enablement", employees: "500+", scenario: "mixed",
+      message: "We're comparing a few coaching platforms and reviewed your docs and pricing. Need something that integrates with our existing call recording stack." },
+  ];
+
+  function fillDemoData() {
+    const lead = DEMO_LEADS[Math.floor(Math.random() * DEMO_LEADS.length)];
+    const form = document.getElementById("leadForm");
+    form.name.value = lead.name;
+    form.email.value = lead.email;
+    form.company.value = lead.company;
+    form.role.value = lead.role;
+    form.employees.value = lead.employees;
+    form.message.value = lead.message;
+
+    const scenarioSelect = document.getElementById("scenario");
+    scenarioSelect.value = lead.scenario;
+    generateHistory();
+  }
+
+  let currentHistory = [];
+
+  function parseDuration(timeStr) {
+    const [m, s] = timeStr.replace("m ", ":").replace("s", "").split(":").map(Number);
+    return (m * 60 + s) * 1000;
+  }
+
+  function generateHistory() {
+    const pages = SCENARIOS[document.getElementById("scenario").value];
+    const totalMs = pages.reduce((sum, p) => sum + parseDuration(p.time_spent), 0);
+    let offset = totalMs;
+
+    currentHistory = pages.map((p) => {
+      const visited_at = new Date(Date.now() - offset).toISOString();
+      offset -= parseDuration(p.time_spent);
+      return { page: p.page, time_spent: p.time_spent, visited_at };
+    });
+
+    document.getElementById("historyList").innerHTML = currentHistory.map((p) =>
+      `<div class="page-visit">
+        <span class="path">${p.page}</span>
+        <span class="meta">${p.time_spent} &nbsp;·&nbsp; ${new Date(p.visited_at).toLocaleTimeString()}</span>
+      </div>`
+    ).join("");
+
+    updatePreview();
+  }
+
+  function buildPayload() {
+    const data = new FormData(document.getElementById("leadForm"));
+    return {
+      name: data.get("name") || "",
+      email: data.get("email") || "",
+      company: data.get("company") || "",
+      role: data.get("role") || "",
+      employees: data.get("employees") || "",
+      message: data.get("message") || "",
+      submitted_at: new Date().toISOString(),
+      page_history: currentHistory,
+    };
+  }
+
+  function updatePreview() {
+    document.getElementById("payloadPreview").textContent =
+      JSON.stringify(buildPayload(), null, 2);
+  }
+
+  document.getElementById("leadForm").addEventListener("input", updatePreview);
+
+  document.getElementById("leadForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const webhookUrl = document.getElementById("webhookUrl").value.trim();
+    if (!webhookUrl) {
+      showStatus("error", "Please enter your n8n webhook URL above.");
+      return;
+    }
+
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.textContent = "Submitting...";
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(buildPayload()),
+      });
+
+      if (res.ok) {
+        showStatus("success", "Lead submitted! Check your n8n execution and Google Sheet.");
+      } else {
+        showStatus("error", `Server returned ${res.status}. Make sure n8n is listening.`);
+      }
+    } catch (err) {
+      showStatus("error", `Could not reach the webhook. Is n8n running? (${err.message})`);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Submit";
+    }
+  });
+
+  function showStatus(type, msg) {
+    const el = document.getElementById("status");
+    el.className = type;
+    el.textContent = msg;
+  }
+
+  generateHistory();
+</script>
+</body>
+</html>
