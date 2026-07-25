@@ -11,3 +11,5 @@ The webhook receives the lead payload, parses it, enriches it with an LLM, appen
 **Flow:** Webhook → Parse Lead → Message a model → Code in JavaScript → Append row in sheet → If → Send a message
 
 Webhook URL: `https://dipansrimany.app.n8n.cloud/webhook/lead-capture`
+
+Google Sheet: https://docs.google.com/spreadsheets/d/13U_jIASuKAgH3QCrt-6V1gWOSGnnA0jAXjZ6U85CUcw/edit?usp=sharing
